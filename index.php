@@ -41,7 +41,7 @@ if(isset($_POST['login'])){
 
          <form action="" method="post">
          <div class="form_block">
-         <label>Email</label>
+         <label>Username</label>
               <input type="text" name="username"  class="form_input">
          </div>
          <div class="form_block">
