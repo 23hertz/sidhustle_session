@@ -1,19 +1,20 @@
 <?php
 session_start();
 
-if(isset($_POST['login'])){
-    $name = $_POST['username'];
-    $pword = $_POST['pwd'];
+if(isset($_POST['register'])){
 
-    if($_SESSION['username'] === $name && $_SESSION['pwd'] === $pword ){
-        header('location:mainpage.php');
-    } 
-    else{
-        $err = "* You are not a registered Member Or Incorrect Username or Password";
-       
+    
+        $username = $_POST['username'] ;
+        $pwd = $_POST['pwd'];
+        $email = $_POST['email'];
+    
+         $_SESSION['username'] = $username;
+         $_SESSION['email'] = $email;
+         $_SESSION['pwd'] = $pwd;
+     
+         header('location:index.php');
     }
-}
-  
+
 
 ?>
 <!DOCTYPE html>
@@ -23,51 +24,38 @@ if(isset($_POST['login'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Registration Page</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .error{
-            color:red;
-            text-align:center;
-            display:block;
-            
-        }
-    </style>
+    
 </head>
 <body>
     
     <div class="container">
    
-    <div class="error">
-       
-         <?php
-            if(isset($err)){
-                echo $err;
-            }
-          ?>
-          </div>
-
          <div class="headings">
-         <h1>Login Page</h1>
+         <h1>Registration Page</h1>
          </div>
 
-        
-        
          <form action="" method="post">
          <div class="form_block">
          <label>Username</label>
               <input type="text" name="username"  class="form_input" required>
          </div>
+
+         <div class="form_block">
+         <label>Email</label>
+              <input type="email" name="email"  class="form_input" required>
+         </div>
+     
          <div class="form_block">
          <label>Password</label>
               <input type="text" name="pwd" class="form_input" required> 
          </div>
 
          <div class="form_block">
-              <input type="submit" value="login" name="login">
+              <input type="submit" value="register" name="register">
          </div>
         </form>
-        Register Here <a href="register.php">Register</a>
        
     </div>
 </body>
